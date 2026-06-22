@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-Portfolio | Redzuan Ahmed bin Abdullah</title>
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Theme Colors: SDG 16 (Peace, Justice and Strong Institutions) - Blue Theme */
+        :root {
+            --primary-color: #005587; /* Official SDG 16 Blue */
+            --secondary-color: #0077b6;
+            --background-color: #f8f9fa;
+            --text-main: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --card-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #caf0f8;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Header / Home */
+        header {
+            background-color: var(--white);
+            padding: 5rem 5%;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p.subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-box {
+            background-color: #e8f4f8;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+            border-left: 5px solid var(--primary-color);
+            text-align: left;
+        }
+
+        /* Cards Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .reflection {
+            background-color: #f1f3f5;
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: auto;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /* Text Sections */
+        .text-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-main);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">e-Portfolio</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#labs">Labs</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#reflection">Reflection</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#resources">Resources</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <h1>Redzuan Ahmed bin Abdullah</h1>
+        <p class="subtitle">Information Science and Technology (FTSM), Universiti Kebangsaan Malaysia</p>
+        
+        <div class="intro-box">
+            <p><strong>Matric No:</strong> A204613</p>
+            <p><strong>Instructor:</strong> Dr. Nazatul</p>
+            <br>
+            <p><strong>Introduction:</strong> I am a dedicated student with a strong focus on mobile application development and digital infrastructure. I aim to create meaningful, user-centric technological solutions using modern frameworks like Kotlin and Jetpack Compose that serve the public interest.</p>
+            <br>
+            <p><strong>SDG Focus:</strong> 100% committed to SDG 16 (Peace, Justice, and Strong Institutions). I believe in building transparent, accountable digital platforms like 'Aduan Kita' that empower communities to report civic issues and seek justice efficiently, strengthening the relationship between citizens and institutions.</p>
+        </div>
+    </header>
+
+    <section id="labs">
+        <h2>Laboratory Work</h2>
+        <div class="grid-container">
+            <div class="card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/1n2yc3HpjtA" title="Lab 1 Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3>Lab 1: User Interface (SDG 16)</h3>
+                    <p>Building the foundational transparent UI for a civic grievance reporting tool.</p>
+                    <div class="reflection">
+                        <strong>Reflection:</strong> Building the initial UI using Jetpack Compose helped me understand how to design accessible public platforms. I focused on clear, unbiased layouts crucial for inclusive institutional applications.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/70s5qmgc91U" title="Lab 2 Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3>Lab 2: User Interaction (SDG 16)</h3>
+                    <p>Implementing reliable state management for citizens to securely log community issues.</p>
+                    <div class="reflection">
+                        <strong>Reflection:</strong> Implementing state hoisting was vital for data integrity. I learned how to manage user inputs dynamically, ensuring citizens can reliably submit reports to authorities without frustrating data loss.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/aQt_MgM2GlY" title="Lab 3 Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3>Lab 3: Material Design (SDG 16)</h3>
+                    <p>Refining the visual architecture to project authority, trust, and institutional reliability.</p>
+                    <div class="reflection">
+                        <strong>Reflection:</strong> Integrating specific SDG 16 themes required a clean, authoritative UI design. I utilized Compose's theming capabilities to enforce consistent typography, colors, and accessibility standards to foster public trust.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/J1S2bZX8DIw" title="Lab 4 Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3>Lab 4: Navigation (SDG 16)</h3>
+                    <p>Constructing a robust navigation graph connecting citizens to various justice and reporting modules.</p>
+                    <div class="reflection">
+                        <strong>Reflection:</strong> Setting up the Navigation component simplified moving between complex screens. I ensured a seamless user experience so that navigating legal and civic reporting procedures feels intuitive and transparent.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Lab 5 Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3>Lab 5: Local Database (SDG 16)</h3>
+                    <p>Integrating secure local storage to ensure equitable offline access for incident reporting.</p>
+                    <div class="reflection">
+                        <strong>Reflection:</strong> Implementing Room allowed the app to cache user reports offline. This is critical for justice equity, allowing citizens in low-connectivity rural areas to draft complaints and sync them when they reach a network.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Major Projects</h2>
+        <div class="grid-container">
+            <div class="card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/D52mqyQsjmQ" title="Project 1 Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3>Aduan Kita (Core Application)</h3>
+                    <p><strong>Problem Statement:</strong> Local communities often lack a centralized, transparent, and easy-to-use platform to report civic issues directly to relevant authorities, weakening institutional accountability.</p>
+                    <div class="reflection">
+                        <strong>Lessons Learned:</strong> Developing this full-scale SDG 16 application solidified my understanding of the MVVM architecture. Decoupling UI logic from business logic ensured the platform remains highly maintainable, secure, and scalable for institutional use.
+                    </div>
+                    <a href="https://github.com/redzuanukm/AduanKita2026" target="_blank" class="btn">View on GitHub</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/7ZsjX956Fe0" title="Project 2 Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3>Project 2: Apps Aduan Kita</h3>
+                    <p><strong>Problem Statement:</strong> To achieve true strong institutional governance, civic reporting requires real-time data streams, geographic verification via device sensors, and cloud API integration to prevent fraud and ensure rapid response.</p>
+                    <div class="reflection">
+                        <strong>Lessons Learned:</strong> Integrating external APIs and cloud databases taught me how to effectively manage transparent, real-time data. This advanced implementation elevated the application into a robust tool for justice, ensuring complaints are logged immutably and actioned swiftly.
+                    </div>
+                    <a href="https://github.com/redzuanukm/project" target="_blank" class="btn">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reflection">
+        <h2>Reflection & Learning Journey</h2>
+        <div class="text-content">
+            <p>My journey through this course has profoundly shifted my perspective on software engineering from merely writing code to designing robust, scalable solutions for public good. Developing the 'Aduan Kita' ecosystem bridged the gap between theoretical knowledge of modern Android architecture and the practical realities of building accountable, user-centric applications. Dedicating my work entirely to SDG 16 (Peace, Justice, and Strong Institutions) gave my technical implementations a profound sense of civic purpose. Moving forward, I feel confident in my ability to independently architect secure, transparent digital platforms using Kotlin, MVVM, and Jetpack Compose to support strong institutional frameworks.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills & Tech Stack</h2>
+        <div class="text-content tag-container">
+            <span class="tag">Kotlin</span>
+            <span class="tag">Jetpack Compose</span>
+            <span class="tag">Material Design 3</span>
+            <span class="tag">MVVM Architecture</span>
+            <span class="tag">Android Navigation Component</span>
+            <span class="tag">Room Database</span>
+            <span class="tag">Firebase & APIs</span>
+            <span class="tag">Cisco Networking (CCNA)</span>
+            <span class="tag">GitHub Pages Deployment</span>
+        </div>
+    </section>
+
+    <section id="resources">
+        <h2>Resources & Acknowledgements</h2>
+        <div class="text-content">
+            <ul style="margin-left: 20px;">
+                <li><strong>Libraries & APIs:</strong> AndroidX Core, Jetpack Compose UI Suite, Navigation Compose, Room Persistence Library, Material Design 3 Components.</li>
+                <li><strong>Tools:</strong> Android Studio, GitHub, Cloud Services.</li>
+                <li><strong>Acknowledgement:</strong> Generative AI tools were utilized to assist with scaffolding HTML/CSS structures, troubleshooting Kotlin compiler errors, and formatting written reflections for clarity. All final code implementation, architectural decisions, and project concepts are my own original work.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Redzuan Ahmed bin Abdullah (A204613). All Rights Reserved.</p>
+        <p>Faculty of Information Science and Technology (FTSM), Universiti Kebangsaan Malaysia.</p>
+    </footer>
+
+</body>
+</html>
